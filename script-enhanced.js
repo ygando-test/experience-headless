@@ -844,6 +844,52 @@ const data = {
                     prevention: "Trust signals: log confirmation + timestamp in audit trail"
                 }
             ]
+        },
+        {
+            title: "Private Wealth Rebalancing with Suitability Review",
+            scenario: "A wealth advisor asks the agent to prepare a portfolio rebalance recommendation for a high-net-worth client before a client meeting.",
+            behavior: [
+                "Agent interprets the advisor's goal: reduce concentration risk while preserving income and tax sensitivity.",
+                "Agent checks client profile, investment objectives, risk tolerance, liquidity needs, tax constraints, restricted securities, and household-level exposure.",
+                "Agent identifies that the client is overweight in a single tech stock due to recent market gains.",
+                "Agent models two rebalance paths: Conservative path (gradual sell-down over multiple tax lots) and Faster path (larger immediate reduction with higher realized gains).",
+                "Agent flags that the recommendation requires human review because it affects suitability, tax exposure, and client consent.",
+                "Agent prepares a meeting-ready summary with the recommendation, rationale, tradeoffs, open questions, and next best action.",
+                "Human advisor reviews, edits, and approves before anything is sent or executed."
+            ],
+            what_matters: "The agent can coordinate analysis across systems, but human judgment remains required for suitability, consent, and fiduciary responsibility.",
+            patterns_used: ["Clarify", "Coordinate", "Context", "Involve", "Handoff", "Trust Signals", "Recovery"],
+            context_preserved: [
+                "Client goals and household profile",
+                "Risk tolerance and investment policy",
+                "Current holdings and concentration exposure",
+                "Tax lot details and realized gain estimates",
+                "Restricted securities and compliance notes",
+                "Prior advisor notes and client preferences",
+                "Approval status and open questions"
+            ],
+            failure_modes: [
+                {
+                    failure: "Agent recommends trades without explaining assumptions",
+                    impact: "Advisor doesn't understand basis for recommendation, can't explain to client",
+                    prevention: "Transparency: show assumptions, calculations, and methodology in summary"
+                },
+                {
+                    failure: "Agent recommends trades without showing tax impact",
+                    impact: "Client surprised by capital gains tax bill",
+                    prevention: "Context schema includes: estimated realized gains, tax lot selection logic"
+                },
+                {
+                    failure: "Agent sends recommendation directly to client",
+                    impact: "Bypasses fiduciary review, creates compliance risk",
+                    prevention: "Human control: advisor must review and approve before any client communication"
+                },
+                {
+                    failure: "Recommendation doesn't account for restricted securities",
+                    impact: "Suggests selling shares that can't be sold, breaks trust",
+                    prevention: "Coordinate: check compliance constraints before modeling rebalance paths"
+                }
+            ]
         }
     ],
 
@@ -2772,25 +2818,26 @@ function renderFilters() {
     const roles = ['PM', 'Eng', 'UX', 'Editorial'];
     roleFilters.innerHTML = roles.map(role => {
         const isActive = activeFilters.role.includes(role) ? 'active' : '';
-        return `<span class="chip ${isActive}" data-filter="role" data-value="${role}">${role}</span>`;
+        const roleClass = role.toLowerCase().replace(' ', '-');
+        return `<button class="role-filter ${roleClass} ${isActive}" data-filter="role" data-value="${role}">${role}</button>`;
     }).join('');
 
     const concepts = ['Headless', 'Task Chaining', 'Single Door', 'Trust', 'Handoff', 'Recovery', 'Human Control', 'Clarify', 'Detour'];
     conceptFilters.innerHTML = concepts.map(concept => {
         const isActive = activeFilters.concept.includes(concept) ? 'active' : '';
-        return `<span class="chip ${isActive}" data-filter="concept" data-value="${concept}">${concept}</span>`;
+        return `<button class="role-filter ${isActive}" data-filter="concept" data-value="${concept}">${concept}</button>`;
     }).join('');
 
     attachFilterListeners();
 }
 
 function attachFilterListeners() {
-    document.querySelectorAll('.chip').forEach(chip => {
-        chip.replaceWith(chip.cloneNode(true));
+    document.querySelectorAll('.role-filter').forEach(filter => {
+        filter.replaceWith(filter.cloneNode(true));
     });
 
-    document.querySelectorAll('.chip').forEach(chip => {
-        chip.addEventListener('click', (e) => {
+    document.querySelectorAll('.role-filter').forEach(filter => {
+        filter.addEventListener('click', (e) => {
             const filterType = e.target.getAttribute('data-filter');
             const value = e.target.getAttribute('data-value');
 
@@ -3042,4 +3089,83 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('close-quick-ask').addEventListener('click', closeQuickAsk);
     document.getElementById('overlay').addEventListener('click', closeQuickAsk);
     document.getElementById('meeting-mode-toggle').addEventListener('click', toggleMeetingMode);
+
+    // Initialize breadcrumbs and back button
+    initializeBreadcrumbsAndBackButton();
 });
+
+// ============================================
+// Breadcrumbs and Back Button
+// ============================================
+let navigationHistory = [];
+
+function initializeBreadcrumbsAndBackButton() {
+    updateBreadcrumbs('getting-started');
+
+    // Back button handler
+    const backButton = document.getElementById('back-button');
+    backButton.addEventListener('click', () => {
+        if (navigationHistory.length > 0) {
+            const previousSection = navigationHistory.pop();
+            const navLink = document.querySelector(`.nav-link[data-section="${previousSection}"]`);
+            if (navLink) {
+                navLink.click();
+            }
+        } else {
+            const homeLink = document.querySelector('.nav-link[data-section="getting-started"]');
+            if (homeLink) homeLink.click();
+        }
+    });
+
+    // Enhance nav link clicks to track history
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const targetSection = e.target.getAttribute('data-section');
+            if (activeSection && activeSection !== targetSection) {
+                navigationHistory.push(activeSection);
+            }
+            updateBreadcrumbs(targetSection);
+        });
+    });
+}
+
+function updateBreadcrumbs(sectionName) {
+    const breadcrumbs = document.getElementById('breadcrumbs');
+    const backButton = document.getElementById('back-button');
+
+    const sectionNames = {
+        'getting-started': 'Start Here',
+        'spine': 'Coordination Spine',
+        'concepts': 'Core Concepts',
+        'by-role': 'Role Guidance',
+        'examples': 'Experience Examples',
+        'tools': 'Decision Tools',
+        'test-cases': 'Test Cases',
+        'questions': 'Alignment Questions',
+        'reframes': 'Leadership Reframes'
+    };
+
+    const displayName = sectionNames[sectionName] || sectionName;
+
+    if (sectionName === 'getting-started') {
+        breadcrumbs.innerHTML = '<span class="breadcrumb-item">Home</span>';
+        backButton.style.display = 'none';
+    } else {
+        breadcrumbs.innerHTML = `
+            <span class="breadcrumb-item link" data-section="getting-started">Home</span>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-item">${displayName}</span>
+        `;
+
+        // Add click listener to home breadcrumb
+        const homeLink = breadcrumbs.querySelector('[data-section="getting-started"]');
+        if (homeLink) {
+            homeLink.addEventListener('click', () => {
+                const navLink = document.querySelector('.nav-link[data-section="getting-started"]');
+                if (navLink) navLink.click();
+            });
+        }
+
+        backButton.style.display = 'inline-flex';
+    }
+}

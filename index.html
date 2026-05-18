@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Headless Experience Design Playbook</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="styles-enhancements.css">
-    <link rel="stylesheet" href="styles-clean.css">
+    <link rel="stylesheet" href="styles-restored.css">
 </head>
 <body>
     <div class="app">
@@ -41,6 +39,15 @@
         </aside>
 
         <main class="main">
+            <div class="breadcrumbs-container">
+                <button id="back-button" class="back-button" style="display: none;">
+                    ← Back
+                </button>
+                <div id="breadcrumbs" class="breadcrumbs">
+                    <span class="breadcrumb-item">Home</span>
+                </div>
+            </div>
+
             <div class="search-bar">
                 <input type="text" id="search" placeholder="Search playbook..." />
                 <button id="clear-search" class="clear-btn" style="display: none;">✕</button>
