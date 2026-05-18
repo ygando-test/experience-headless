@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Headless Experience Design Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-enhancements.css">
+    <link rel="stylesheet" href="styles-clean.css">
+</head>
+<body>
+    <div class="app">
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+
+        <div id="mobile-overlay" class="mobile-overlay"></div>
+
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h1>Headless Experience Design</h1>
+                <p class="tagline">Coordination-first, not UI-less</p>
+            </div>
+            <div class="spine-summary">
+                <div class="spine-summary-label">Core Thesis</div>
+                <div class="spine-summary-text">Headless is not UI-less. It is coordination-first.</div>
+            </div>
+            <nav class="nav">
+                <a href="#getting-started" class="nav-link active" data-section="getting-started">Start Here</a>
+                <a href="#spine" class="nav-link" data-section="spine">Coordination Spine</a>
+                <a href="#concepts" class="nav-link" data-section="concepts">Core Concepts</a>
+                <a href="#by-role" class="nav-link" data-section="by-role">Role Guidance</a>
+                <a href="#examples" class="nav-link" data-section="examples">Experience Examples</a>
+                <a href="#tools" class="nav-link" data-section="tools">Decision Tools</a>
+                <a href="#test-cases" class="nav-link" data-section="test-cases">Test Cases</a>
+                <a href="#questions" class="nav-link" data-section="questions">Alignment Questions</a>
+                <a href="#reframes" class="nav-link" data-section="reframes">Leadership Reframes</a>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <div class="search-bar">
+                <input type="text" id="search" placeholder="Search playbook..." />
+                <button id="clear-search" class="clear-btn" style="display: none;">✕</button>
+                <button id="meeting-mode-toggle" class="meeting-mode-btn" title="Meeting Mode: Larger text, less detail">
+                    <span class="meeting-mode-icon">👁</span>
+                    <span class="meeting-mode-label">Meeting Mode</span>
+                </button>
+            </div>
+
+            <div class="content">
+                <section id="getting-started" class="section active">
+                    <h2>Start Here</h2>
+                    <p class="section-description">Choose your path based on what you need right now.</p>
+                    <div id="getting-started-content"></div>
+                </section>
+
+                <section id="spine" class="section">
+                    <div class="hero">
+                        <div class="hero-label">Core Thesis</div>
+                        <div class="hero-title">In headless and agentic systems, the experience succeeds or fails based on how the system behaves across steps, surfaces, and humans.</div>
+                        <div class="hero-subtitle">Your job: Design how intent becomes coordinated action, while preserving context, control, and trust.</div>
+                    </div>
+                    <div id="spine-content"></div>
+                </section>
+
+                <section id="concepts" class="section">
+                    <h2>Core Concepts</h2>
+                    <p class="section-description">Nine patterns that show up across headless systems.</p>
+                    <div class="filters">
+                        <div class="filter-group">
+                            <div class="filter-label">Filter by:</div>
+                            <div id="concept-filters" class="chips"></div>
+                        </div>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-label">💡 Tip</div>
+                        <p class="highlight-text">Pick one concept, lead with the concrete example, then connect to the principle.</p>
+                    </div>
+                    <div id="concepts-content"></div>
+                </section>
+
+                <section id="by-role" class="section">
+                    <h2>Role Guidance</h2>
+                    <p class="section-description">How to explain headless experience design to PM, Engineering, UX, and Editorial.</p>
+                    <div class="filters">
+                        <div class="filter-group">
+                            <div class="filter-label">Filter by:</div>
+                            <div id="role-filters" class="chips"></div>
+                        </div>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-label">💡 Tip</div>
+                        <p class="highlight-text">Start with their concerns. Use their language. Connect behavior layer to outcomes they own.</p>
+                    </div>
+                    <div id="by-role-content"></div>
+                </section>
+
+                <section id="examples" class="section">
+                    <h2>Experience Examples</h2>
+                    <p class="section-description">Real scenarios showing coordination-first design in action.</p>
+                    <div class="highlight-card">
+                        <div class="highlight-label">💡 Tip</div>
+                        <p class="highlight-text">When explaining gets abstract, anchor in a real scenario. Walk through what the system does, step by step.</p>
+                    </div>
+                    <div id="examples-content"></div>
+                </section>
+
+                <section id="tools" class="section">
+                    <h2>Decision Tools</h2>
+                    <p class="section-description">Checklists, templates, and testing protocols to prevent errors and ensure consistency.</p>
+                    <div class="highlight-card">
+                        <div class="highlight-label">💡 Tip</div>
+                        <p class="highlight-text">These are working documents. Copy templates, check off checklists, run tests. Make them your own.</p>
+                    </div>
+                    <div id="tools-content"></div>
+                </section>
+
+                <section id="test-cases" class="section">
+                    <h2>Industry Test Cases</h2>
+                    <p class="section-description">See how FDEs in different industries use this playbook to design headless agents. Follow their journey from assignment to validated design.</p>
+                    <div class="highlight-card">
+                        <div class="highlight-label">💡 Tip</div>
+                        <p class="highlight-text">Pick an industry similar to yours. See how they mapped the 4 anchors, created schemas, and solved coordination challenges.</p>
+                    </div>
+                    <div id="test-cases-content"></div>
+                </section>
+
+                <section id="questions" class="section">
+                    <h2>Alignment Questions</h2>
+                    <p class="section-description">Shift from defending to exploring. Ask, don't tell.</p>
+                    <div class="highlight-card">
+                        <div class="highlight-label">💡 Tip</div>
+                        <p class="highlight-text">Click the <strong>?</strong> button (bottom right) to access questions anywhere in the app.</p>
+                    </div>
+                    <div id="questions-content"></div>
+                </section>
+
+                <section id="reframes" class="section">
+                    <h2>Leadership Reframes</h2>
+                    <p class="section-description">Strategic questions with anchored answers, plus quick responses to objections.</p>
+                    <div id="copy-bank-content"></div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <button id="quick-ask-btn" class="quick-ask-fab" title="Quick Ask">?</button>
+
+    <div id="quick-ask-panel" class="quick-ask-panel">
+        <div class="quick-ask-header">
+            <h3>Quick Ask</h3>
+            <button id="close-quick-ask" class="close-btn">✕</button>
+        </div>
+        <div class="quick-ask-content" id="quick-ask-content"></div>
+    </div>
+
+    <div id="overlay" class="overlay"></div>
+    <div id="toast" class="toast">Copied to clipboard!</div>
+
+    <script src="script-enhanced.js?v=20250517-1"></script>
+</body>
+</html>
