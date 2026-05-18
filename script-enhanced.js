@@ -1913,30 +1913,46 @@ function renderGettingStarted() {
     if (!content) return;
 
     let html = `
-        <div class="playbook-intro">
-            <h3 class="playbook-intro-title">Headless Experience Design Playbook</h3>
-            <p class="playbook-intro-body">Headless changes where experience quality lives. Instead of designing one fixed screen, teams must design how intent, context, decisions, handoffs, and recovery move across agents, systems, humans, and channels.</p>
+        <!-- Hero Section -->
+        <div class="playbook-hero">
+            <div class="playbook-hero-inner">
+                <div class="playbook-hero-eyebrow">Core Thesis</div>
+                <h2 class="playbook-hero-title">Headless Experience Design</h2>
+                <p class="playbook-hero-thesis">In headless and agentic systems, the experience succeeds or fails based on how the system behaves across steps, surfaces, and humans.</p>
+                <p class="playbook-hero-thesis">Agentic systems succeed when intent, coordination, context, and human judgment work together across every step.</p>
+            </div>
+        </div>
 
-            <div class="playbook-helps-title">What this helps teams do</div>
-            <div class="playbook-helps-grid">
-                <div class="helps-card">
-                    <div class="helps-number">1</div>
-                    <div class="helps-text">Decide what the agent should do, ask, or escalate</div>
+        <!-- Behavior Layer Summary -->
+        <div class="behavior-layer-summary">
+            <h3 class="behavior-layer-title">The Behavior Layer</h3>
+            <p class="behavior-layer-subtitle">Every agentic experience must answer four questions.</p>
+            <div class="behavior-layer-grid">
+                <div class="behavior-layer-item">
+                    <div class="behavior-layer-item-label">Intent</div>
+                    <div class="behavior-layer-item-desc">What does the user need?</div>
                 </div>
-                <div class="helps-card">
-                    <div class="helps-number">2</div>
-                    <div class="helps-text">Align roles across PM, Engineering, UX, CXD, and Editorial</div>
+                <div class="behavior-layer-item">
+                    <div class="behavior-layer-item-label">Coordinate</div>
+                    <div class="behavior-layer-item-desc">What happens next?</div>
                 </div>
-                <div class="helps-card">
-                    <div class="helps-number">3</div>
-                    <div class="helps-text">Test whether the experience preserves intent, context, and trust</div>
+                <div class="behavior-layer-item">
+                    <div class="behavior-layer-item-label">Context</div>
+                    <div class="behavior-layer-item-desc">What carries forward?</div>
+                </div>
+                <div class="behavior-layer-item">
+                    <div class="behavior-layer-item-label">Involve</div>
+                    <div class="behavior-layer-item-desc">Where does human judgment matter?</div>
                 </div>
             </div>
         </div>
 
-        <div class="playbook-structure">
-            <h3 class="subsection-title">What's in This Playbook</h3>
-            <p class="subsection-description">Nine sections organized to support how you work. Here's what each contains:</p>
+        <!-- Four Anchors Section -->
+        <div class="four-anchors-section">
+            <div class="four-anchors-header">
+                <h3 class="four-anchors-title">Four Anchors</h3>
+                <p class="four-anchors-subtitle">Every behavior-layer decision maps to one of these. Every agentic experience breaks when one of these fails.</p>
+            </div>
 
             <div class="structure-grid">
                 <div class="structure-card" data-section="spine" style="cursor: pointer;">
@@ -2022,8 +2038,8 @@ function renderGettingStarted() {
             </div>
         </div>
 
-        <h3 class="subsection-title" style="margin-top: 48px;">Choose Your Path</h3>
-        <p class="subsection-description">Jump directly to what you need based on where you are right now.</p>
+        <h3 class="subsection-title" style="margin-top: 96px; text-align: center; font-size: 32px;">Choose Your Path</h3>
+        <p class="subsection-description" style="text-align: center; max-width: 650px; margin: 16px auto 32px auto; font-size: 16px;">Jump directly to what you need based on where you are right now.</p>
     `;
 
     html += data.gettingStarted.paths.map(path => `

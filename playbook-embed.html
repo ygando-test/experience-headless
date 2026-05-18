@@ -698,116 +698,171 @@ body {
 }
 
 /* Playbook Intro Section */
-.playbook-intro {
-    max-width: 900px;
-    margin: 0 auto var(--space-2xl) auto;
+/* Hero Section - Compact & Focused */
+.playbook-hero {
+    background: var(--gradient-hero);
+    border-radius: var(--radius-lg);
+    padding: 48px 32px;
+    margin-bottom: 80px;
     text-align: center;
 }
 
-.playbook-intro-title {
-    font-size: 32px;
+.playbook-hero-inner {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.playbook-hero-eyebrow {
+    font-size: 12px;
     font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    margin-bottom: 16px;
+}
+
+.playbook-hero-title {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
     color: var(--color-text);
-    margin: 0 0 var(--space-md) 0;
+    margin: 0 0 24px 0;
     letter-spacing: -0.02em;
 }
 
-.playbook-intro-body {
-    font-size: 16px;
-    line-height: 1.7;
-    color: var(--color-text-muted);
-    margin: 0 0 var(--space-xl) 0;
-}
-
-.playbook-helps-title {
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--color-text-muted);
-    margin-bottom: var(--space-lg);
-}
-
-.playbook-helps-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-lg);
-    margin-bottom: var(--space-2xl);
-}
-
-.helps-card {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: var(--space-lg);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-sm);
-    text-align: center;
-    transition: all 0.2s ease;
-}
-
-.helps-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--color-primary);
-}
-
-.helps-number {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: var(--color-primary);
-    color: var(--color-surface);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: var(--space-xs);
-}
-
-.helps-text {
-    font-size: 15px;
-    font-weight: 500;
-    line-height: 1.5;
+.playbook-hero-thesis {
+    font-size: 18px;
+    line-height: 1.6;
     color: var(--color-text);
+    margin: 0 0 16px 0;
+}
+
+.playbook-hero-thesis + .playbook-hero-thesis {
+    margin-top: 16px;
+}
+
+/* Behavior Layer Framework Summary */
+.behavior-layer-summary {
+    max-width: 1040px;
+    margin: 0 auto 80px auto;
+    background: #F8F9FA;
+    border-radius: var(--radius-md);
+    padding: 40px 32px;
+}
+
+.behavior-layer-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0 0 8px 0;
+    text-align: center;
+    letter-spacing: -0.01em;
+}
+
+.behavior-layer-subtitle {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+    margin: 0 0 32px 0;
+    text-align: center;
+}
+
+.behavior-layer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.behavior-layer-item {
+    text-align: center;
+}
+
+.behavior-layer-item-label {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0 0 8px 0;
+    letter-spacing: -0.01em;
+}
+
+.behavior-layer-item-desc {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+    margin: 0;
+}
+
+@media (max-width: 1024px) {
+    .behavior-layer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px 32px;
+    }
 }
 
 @media (max-width: 768px) {
-    .playbook-helps-grid {
-        grid-template-columns: 1fr;
+    .playbook-hero-title {
+        font-size: 32px;
     }
 
-    .playbook-intro-title {
+    .playbook-hero-thesis {
+        font-size: 16px;
+    }
+
+    .behavior-layer-title {
         font-size: 24px;
+    }
+
+    .behavior-layer-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
     }
 }
 
-/* Playbook Structure Section */
-.playbook-structure {
+/* Four Anchors Section */
+.four-anchors-section {
     max-width: 1040px;
-    margin: 0 auto var(--space-2xl) auto;
+    margin: 0 auto 96px auto;
+}
+
+.four-anchors-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.four-anchors-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0 0 16px 0;
+    letter-spacing: -0.01em;
+}
+
+.four-anchors-subtitle {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin: 0;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .structure-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--space-lg);
-    margin-top: var(--space-lg);
+    gap: 24px;
 }
 
 .structure-card {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    padding: var(--space-lg);
+    padding: 24px;
     box-shadow: var(--shadow-sm);
     transition: all 0.2s ease;
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
+    gap: 12px;
 }
 
 .structure-card:hover {
@@ -824,14 +879,16 @@ body {
 
 .structure-icon {
     font-size: 32px;
-    margin-bottom: var(--space-xs);
+    line-height: 1;
+    margin-bottom: 4px;
 }
 
 .structure-title {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
     color: var(--color-text);
     margin: 0;
+    letter-spacing: -0.01em;
 }
 
 .structure-desc {
@@ -848,12 +905,12 @@ body {
 }
 
 .structure-use {
-    margin-top: var(--space-sm);
-    padding-top: var(--space-sm);
+    margin-top: 12px;
+    padding-top: 12px;
     border-top: 1px solid var(--color-border-subtle);
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-xs);
+    gap: 6px;
     align-items: center;
 }
 
@@ -867,11 +924,11 @@ body {
 
 .structure-use-chip {
     display: inline-block;
-    padding: 4px 12px;
+    padding: 4px 10px;
     background: var(--color-primary-light);
     color: var(--color-primary);
     border-radius: 12px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     line-height: 1.4;
 }
@@ -5308,30 +5365,46 @@ function renderGettingStarted() {
     if (!content) return;
 
     let html = `
-        <div class="playbook-intro">
-            <h3 class="playbook-intro-title">Headless Experience Design Playbook</h3>
-            <p class="playbook-intro-body">Headless changes where experience quality lives. Instead of designing one fixed screen, teams must design how intent, context, decisions, handoffs, and recovery move across agents, systems, humans, and channels.</p>
+        <!-- Hero Section -->
+        <div class="playbook-hero">
+            <div class="playbook-hero-inner">
+                <div class="playbook-hero-eyebrow">Core Thesis</div>
+                <h2 class="playbook-hero-title">Headless Experience Design</h2>
+                <p class="playbook-hero-thesis">In headless and agentic systems, the experience succeeds or fails based on how the system behaves across steps, surfaces, and humans.</p>
+                <p class="playbook-hero-thesis">Agentic systems succeed when intent, coordination, context, and human judgment work together across every step.</p>
+            </div>
+        </div>
 
-            <div class="playbook-helps-title">What this helps teams do</div>
-            <div class="playbook-helps-grid">
-                <div class="helps-card">
-                    <div class="helps-number">1</div>
-                    <div class="helps-text">Decide what the agent should do, ask, or escalate</div>
+        <!-- Behavior Layer Summary -->
+        <div class="behavior-layer-summary">
+            <h3 class="behavior-layer-title">The Behavior Layer</h3>
+            <p class="behavior-layer-subtitle">Every agentic experience must answer four questions.</p>
+            <div class="behavior-layer-grid">
+                <div class="behavior-layer-item">
+                    <div class="behavior-layer-item-label">Intent</div>
+                    <div class="behavior-layer-item-desc">What does the user need?</div>
                 </div>
-                <div class="helps-card">
-                    <div class="helps-number">2</div>
-                    <div class="helps-text">Align roles across PM, Engineering, UX, CXD, and Editorial</div>
+                <div class="behavior-layer-item">
+                    <div class="behavior-layer-item-label">Coordinate</div>
+                    <div class="behavior-layer-item-desc">What happens next?</div>
                 </div>
-                <div class="helps-card">
-                    <div class="helps-number">3</div>
-                    <div class="helps-text">Test whether the experience preserves intent, context, and trust</div>
+                <div class="behavior-layer-item">
+                    <div class="behavior-layer-item-label">Context</div>
+                    <div class="behavior-layer-item-desc">What carries forward?</div>
+                </div>
+                <div class="behavior-layer-item">
+                    <div class="behavior-layer-item-label">Involve</div>
+                    <div class="behavior-layer-item-desc">Where does human judgment matter?</div>
                 </div>
             </div>
         </div>
 
-        <div class="playbook-structure">
-            <h3 class="subsection-title">What's in This Playbook</h3>
-            <p class="subsection-description">Nine sections organized to support how you work. Here's what each contains:</p>
+        <!-- Four Anchors Section -->
+        <div class="four-anchors-section">
+            <div class="four-anchors-header">
+                <h3 class="four-anchors-title">Four Anchors</h3>
+                <p class="four-anchors-subtitle">Every behavior-layer decision maps to one of these. Every agentic experience breaks when one of these fails.</p>
+            </div>
 
             <div class="structure-grid">
                 <div class="structure-card" data-section="spine" style="cursor: pointer;">
@@ -5417,8 +5490,8 @@ function renderGettingStarted() {
             </div>
         </div>
 
-        <h3 class="subsection-title" style="margin-top: 48px;">Choose Your Path</h3>
-        <p class="subsection-description">Jump directly to what you need based on where you are right now.</p>
+        <h3 class="subsection-title" style="margin-top: 96px; text-align: center; font-size: 32px;">Choose Your Path</h3>
+        <p class="subsection-description" style="text-align: center; max-width: 650px; margin: 16px auto 32px auto; font-size: 16px;">Jump directly to what you need based on where you are right now.</p>
     `;
 
     html += data.gettingStarted.paths.map(path => `
